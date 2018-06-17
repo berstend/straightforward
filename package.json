@@ -1,6 +1,6 @@
 {
   "name": "straightforward",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "A straightforward forward-proxy.",
   "main": "index.js",
   "repository": "berstend/straightforward",
