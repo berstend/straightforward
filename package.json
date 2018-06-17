@@ -1,0 +1,51 @@
+{
+  "name": "straightforward",
+  "version": "1.2.1",
+  "description": "A straightforward forward-proxy.",
+  "main": "index.js",
+  "repository": "berstend/straightforward",
+  "author": "berstend",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/berstend/straightforward/issues"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "bin": {
+    "straightforward": "./cli.js"
+  },
+  "scripts": {
+    "test": "ava -v && standard"
+  },
+  "keywords": [
+    "straightforward",
+    "forward-proxy",
+    "proxy",
+    "squid",
+    "self-contained",
+    "http",
+    "https",
+    "wss",
+    "connect",
+    "request",
+    "cli"
+  ],
+  "dependencies": {
+    "debug": "^3.1.0",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "got": "^8.3.1",
+    "p-timeout": "^2.0.1",
+    "proxy-agent": "^3.0.0",
+    "standard": "^11.0.1"
+  }
+}
