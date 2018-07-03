@@ -119,7 +119,7 @@ const Straightforward = require('straightforward')
 ## In action
 
 ```bash
-straightforward --replace-text "example:FOOBAR"
+❯❯❯ straightforward --replace-text "example:FOOBAR"
 ```
 
 ![foobar](https://i.imgur.com/ZOxVhxE.png)
