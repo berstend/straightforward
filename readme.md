@@ -119,6 +119,24 @@ const Straightforward = require('straightforward')
 ![foobar](https://i.imgur.com/ZOxVhxE.png)
 
 
+## Example: Secure proxy on fresh server in 30 seconds
+
+Let's say you have a fresh linux server and want to use it as an authenticated forward proxy quickly.
+
+* Make sure [nvm](https://github.com/creationix/nvm#install-script) is installed:
+  * `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
+* Make sure a recent version of Node.js is installed: 
+  * `nvm install node && nvm use node && node --version`
+* Add [forever](https://www.npmjs.com/package/forever) (process manager) and straightforward: 
+  * `npm install -g forever straightforward`
+* Start proxy daemon: 
+  * `forever start --id "proxy1" $( which straightforward  ) --port 9191 --quiet --auth 'user:foobar'`
+* Test your proxy from a different machine:
+  * `curl --proxy http://user:foobar@SERVER:9191/ http://canhazip.com`
+* List all running forever services: 
+  * `forever list`
+* Stop our proxy service daemon:
+  * `forever stop proxy1`
 
 ## API
 
