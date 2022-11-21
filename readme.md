@@ -1,4 +1,4 @@
-# 🏴 straightforward [![ ](https://packagephobia.now.sh/badge?p=straightforward@2.0.3)](https://packagephobia.now.sh/result?p=straightforward) [![ ](https://img.shields.io/npm/v/straightforward.svg)](https://www.npmjs.com/package/straightforward)
+# 🏴 straightforward ![npm bundle size](https://img.shields.io/bundlephobia/min/straightforward) [![ ](https://img.shields.io/npm/v/straightforward.svg)](https://www.npmjs.com/package/straightforward)
 
 <a href="https://github.com/berstend/straightforward"><img src="https://i.imgur.com/B9KXKGS.jpg" width="214px" height="790px" align="right" /></a>
 
