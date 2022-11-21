@@ -16,7 +16,7 @@ export const delay = (ms: number) => new Promise((_) => setTimeout(_, ms))
 export const timeout = async (promises: Promise<any>[], ms: number) =>
   await Promise.race([
     Promise.all(promises),
-    delay(5 * 1000).then(() => {
+    delay(ms).then(() => {
       throw new Error("Timeout exceeded")
     }),
   ])
