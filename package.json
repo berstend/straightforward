@@ -1,8 +1,20 @@
 {
   "name": "straightforward",
-  "version": "2.0.3",
+  "version": "4.1.1",
   "description": "A straightforward forward-proxy.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "repository": "berstend/straightforward",
   "author": "berstend",
   "license": "MIT",
@@ -10,13 +22,17 @@
     "url": "https://github.com/berstend/straightforward/issues"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=16"
   },
   "bin": {
     "straightforward": "./cli.js"
   },
   "scripts": {
-    "test": "ava -v && standard"
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "watch": "npm run build -- --watch src",
+    "test": "ava -v",
+    "ts": "node -r esbuild-register",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "straightforward",
@@ -32,20 +48,19 @@
     "cli"
   ],
   "dependencies": {
-    "debug": "^3.1.0",
-    "yargs": "^11.0.0"
+    "debug": "^4.3.4",
+    "yargs": "^17.6.2"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "got": "^8.3.1",
-    "p-timeout": "^2.0.1",
-    "proxy-agent": "^3.0.0",
-    "standard": "^11.0.1"
+    "@types/debug": "^4.1.7",
+    "@types/node": "^18.11.9",
+    "ava": "^5.1.0",
+    "esbuild": "^0.15.14",
+    "esbuild-register": "^3.4.1",
+    "got-cjs": "^12.5.4",
+    "hpagent": "^1.2.0",
+    "proxy-agent": "^5.0.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
   }
 }
