@@ -18,6 +18,11 @@ const argv = yargs
     describe: `Enable proxy authentication`,
     type: "string",
   })
+  .option("dynamic-auth", {
+    // alias: "a",
+    describe: `Enable proxy authentication with no validation`,
+    type: "boolean",
+  })
   .example('$0 --auth "user:pass"', "Require authentication")
   .option("echo", {
     alias: "e",
@@ -71,10 +76,15 @@ async function cli() {
     sf.on("serverError", (err) => console.error("An error occured.", err))
   }
 
-  if (argv.auth) {
+  if (argv.auth && !argv.dynamicAuth) {
     const [user, pass] = argv.auth.split(":")
     sf.onRequest.use(middleware.auth({ user, pass }))
     sf.onConnect.use(middleware.auth({ user, pass }))
+  }
+
+  if (argv.dynamicAuth) {
+    sf.onRequest.use(middleware.auth({ dynamic: true }))
+    sf.onConnect.use(middleware.auth({ dynamic: true }))
   }
 
   if (argv.echo) {
