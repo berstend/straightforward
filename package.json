@@ -1,6 +1,6 @@
 {
   "name": "straightforward",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "description": "A straightforward forward-proxy.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
