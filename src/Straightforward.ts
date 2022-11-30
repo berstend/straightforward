@@ -175,7 +175,9 @@ export class Straightforward extends EventEmitter {
       if (req.destroyed) {
         return proxyReq.destroy()
       }
-      req.pipe(proxyReq)
+      req.pipe(proxyReq).on("error", (e) => {
+        debug("req.pipe(proxyReq) has error: " + e.message)
+      })
     })
   }
 
@@ -193,7 +195,9 @@ export class Straightforward extends EventEmitter {
       res.writeHead(proxyRes.statusCode || 200, proxyRes.headers)
     }
     if (!res.writableEnded) {
-      proxyRes.pipe(res)
+      proxyRes.pipe(res).on("error", (e) => {
+        debug("proxyRes.pipe(res) has error: " + e.message)
+      })
     }
   }
 
@@ -228,8 +232,12 @@ export class Straightforward extends EventEmitter {
 
         serverSocket.write(head)
         if (!req.destroyed && clientSocket.writable) {
-          serverSocket.pipe(clientSocket)
-          clientSocket.pipe(serverSocket)
+          serverSocket.pipe(clientSocket).on("error", (e) => {
+            debug("serverSocket.pipe(clientSocket) has error: " + e.message)
+          })
+          clientSocket.pipe(serverSocket).on("error", (e) => {
+            debug("clientSocket.pipe(serverSocket) has error: " + e.message)
+          })
         }
       }
     )
